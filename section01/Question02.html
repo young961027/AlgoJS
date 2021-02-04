@@ -7,11 +7,16 @@
     <body>
         <script>
             function solution(a, b, c){
-                let answer="YES", max;
+                let answer, max;
+                let bigger = a > b ? a : b;
+                let biggest = bigger > c ? bigger : c;
+                max = a + b + c - biggest;
+                if(biggest<max) answer = "YES";
+                else answer = "NO";
                 return answer;
             }
 
-            console.log(solution(13, 33, 17));
+            console.log(solution(13, 33, 20));
         </script>
     </body>
 </html>
