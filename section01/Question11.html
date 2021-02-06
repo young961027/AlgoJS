@@ -8,9 +8,12 @@
         <script>
             function solution(s){         
                 let answer=0;
+                let cap = s.toUpperCase();
+                for(i=0; i<s.length; i++) {
+                    if(s[i] === cap[i]) answer++;
+                }
                 return answer;
             }
-
             let str="KoreaTimeGood";
             console.log(solution(str));
         </script>
