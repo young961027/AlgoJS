@@ -8,10 +8,12 @@
         <script>
             function solution(s){
                 let answer="";
-                answer = s.replace(/A/g,"#");
+                for (let x of s) {
+                    if(x === 'A') answer += '#';
+                    else answer += x;
+                }
                 return answer;
             }
-            
             let str="BANANA";
             console.log(solution(str));
         </script>
@@ -29,7 +31,7 @@
         <script>
             function solution(s){
                 let answer=s;
-                answer = answer.replace("A","#");
+                answer = s.replace(/A/g,"#");
                 return answer;
             }
             
