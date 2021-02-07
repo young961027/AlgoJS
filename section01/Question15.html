@@ -8,9 +8,13 @@
         <script>
             function solution(s){  
                 let answer;
+                let isOdd = s.length % 2;
+                let mid = Math.floor(s.length / 2);
+                if(isOdd) answer = s[mid];
+                else answer = s[mid-1]+s[mid];
                 return answer;
             }
-            console.log(solution("study"));
+            console.log(solution("good"));
         </script>
     </body>
 </html>
