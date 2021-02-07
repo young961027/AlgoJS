@@ -7,7 +7,16 @@
     <body>
         <script>
             function solution(s){  
+                let num = 5;
+                let idx = Number;
                 let answer="", max=Number.MIN_SAFE_INTEGER;
+                for(i=0; i<num; i++) {
+                    if(s[i].length > max) {
+                        idx = i;
+                        max = s[i].length;
+                    }
+                }
+                answer = s[idx];
                 return answer;
             }
             let str=["teacher", "time", "student", "beautiful", "good"];
