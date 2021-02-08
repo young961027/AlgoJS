@@ -8,10 +8,16 @@
         <script>
             function solution(arr){  
                 let n=arr.length;
-                let answer=Array.from({length:n}, ()=>1);
+                let answer = [];
+                for (let x of arr) {
+                    let big = 1;
+                    for(i=0; i<n; i++) {
+                        if(x<arr[i]) big++;
+                    }
+                    answer.push(big);
+                }
                 return answer;
             }
-
             let arr=[87, 89, 92, 100, 76];
             console.log(solution(arr));
         </script>
