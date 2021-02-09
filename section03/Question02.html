@@ -8,6 +8,12 @@
         <script>
             function solution(s){
                 let answer="YES";
+                let word = "";
+                for(i=0; i<s.length; i++) {
+                    let x = s.toLowerCase().charCodeAt(i);
+                    if(65<=x && x <= 90) word+=s[i];
+                }
+                if(word.split('').reverse().join('')!=word) answer="NO";
                 return answer;
             }
             
