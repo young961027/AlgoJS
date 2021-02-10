@@ -8,6 +8,18 @@
         <script>
             function solution(s, t){
                 let answer=[];
+                let result=[];
+                for(i=0; i<s.length; i++) {
+                    if(s[i]===t) result.push(i);
+                }
+                for(i=0; i<s.length; i++) {
+                    let distance=[];
+                    for(let x of result) {
+                        let d = x > i ? x-i : i-x;
+                        distance.push(d);
+                    }
+                    answer.push(Math.min(...distance));
+                }
                 return answer;
             }
             
