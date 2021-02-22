@@ -7,6 +7,24 @@
         <script>
             function solution(n, arr){
                 let answer, max=Number.MIN_SAFE_INTEGER;
+                let candidate = [];
+                for (let x of arr) {
+                    let cnt = 10;
+                    let sum = 0;
+                    while(cnt !== 100000) {
+                        sum += Math.floor((x%cnt)/(cnt/10));
+                        cnt *= 10;
+                    }
+                    candidate.push(sum);
+                }
+                maxNum = Math.max(...candidate);
+                let indices = [];
+                let idx = candidate.indexOf(maxNum);
+                while (idx != -1) {
+                    indices.push(arr[idx]);
+                    idx = candidate.indexOf(maxNum, idx+1);
+                }
+                answer = Math.max(...indices);
                 return answer;
             }
             
@@ -18,7 +36,7 @@
 
 
 
-<html>
+<!-- <html>
     <head>
         <meta charset="UTF-8">
         <title>출력결과</title>
@@ -32,4 +50,4 @@
             let arr=[128, 460, 603, 40, 521, 137, 123];
             console.log(solution(7, arr));
         </script>
-    </body>
+    </body> -->
