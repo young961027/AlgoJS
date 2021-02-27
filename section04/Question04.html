@@ -6,8 +6,26 @@
     <body>
         <script>
             function solution(m, product){
+                let n = product.length;
                 let answer=0;
-
+                let price = [];
+                let idxPrice = [];
+                for (let  x of product) {
+                    price.push(x[0] + x[1]);
+                    idxPrice.push(x[0] + x[1]);
+                }
+                price.sort((a,b) => { return a-b; });
+                let count = sum = 0;
+                for (let y of price) {
+                    if (sum <= m) count++;
+                    else break;
+                    sum += y;
+                }
+                let limit = price[count-1];
+                let limitIdx = idxPrice.indexOf(limit);
+                sum -= product[limitIdx][0]/2;
+                if (sum <= m) answer = count+1;
+                else answer = count;
                 return answer;
             }
             
