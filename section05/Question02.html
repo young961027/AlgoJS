@@ -6,7 +6,15 @@
     <body>
         <script>
             function solution(arr1, arr2){
-                let answer=[]; 
+                let answer=[];
+                let m = arr1.length;
+                let n = arr2.length;
+                let i = k = 0;
+                while (i<m) {
+                    if (arr2.indexOf(arr1[i])) answer.push(arr1[i]);
+                    i++;
+                }
+                answer.sort((a,b) => {return a-b;});
                 return answer;
             }
             
