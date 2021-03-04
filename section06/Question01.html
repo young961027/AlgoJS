@@ -7,7 +7,13 @@
         <script>
             function solution(s){
                 let answer="YES";
-                return answer;
+                let open = close = 0;
+                for (let x of s) {
+                    if (x === '(') open++;
+                    else if (x === ')') close++;
+                }
+                if (open === close) return answer;
+                else return "NO";
             }
             
             let a="(()(()))(()";
