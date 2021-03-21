@@ -7,6 +7,26 @@
         <script>
             function solution(s){  
                 let answer;
+                let a=0,b=0,c=0,d=0,e=0;
+                for (let x of s) {
+                    if (x==='A') {
+                        a++;
+                    } else if (x==='B') {
+                        b++;
+                    } else if (x==='C') {
+                        c++;
+                    } else if (x==='D') {
+                        d++;
+                    } else if (x==='E') {
+                        e++;
+                    }
+                }
+                let max = Math.max(a,b,c,d,e);
+                if (max===a) answer = "A";
+                else if (max===b) answer = "B";
+                else if (max===c) answer = "C";
+                else if (max===d) answer = "D";
+                else if (max===e) answer = "E";
                 return answer;
             }
 
@@ -15,3 +35,33 @@
         </script>
     </body>
 </html>
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){  
+                let answer;
+                let sH = new Map();
+                for(let x of s){
+                    if(sH.has(x)) sH.set(x, sH.get(x)+1);
+                    else sH.set(x, 1);
+                }
+                let max=Number.MIN_SAFE_INTEGER;
+                for(let [key, val] of sH){
+                    if(val>max){
+                        max=val;
+                        answer=key;
+                    }
+                }
+                return answer;
+            }
+
+            let str="BACBACCACCBDEDE";
+            console.log(solution(str));
+        </script>
+    </body>
+</html> -->
