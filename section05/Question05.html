@@ -6,14 +6,16 @@
     <body>
         <script>
             function solution(k, arr){
-                let answer=Number.MIN_SAFE_INTEGER, sum=0;
-                for (let i = 0; i < arr.length - k; i++) {
-                    let sum = 0;
-                    for (let j = 0; j < k; j++) {
-                        sum += arr[i+j];
-                    }
-                    if(sum > answer) answer = sum;
+                let answer,window = 0;
+                for (let i = 0; i < k; i++) {
+                    window += arr[i];
                 }
+                answer = window;
+                for (let j = 0; j < arr.length-k; j++) {
+                    window = window - arr[j] + arr[j+k];
+                    answer = answer < window ? window : answer;
+                }
+
                 return answer;
             }
             
@@ -22,6 +24,15 @@
         </script>
     </body>
 </html>
+
+<!--나의 풀이 1 
+    for (let i = 0; i < arr.length - k; i++) {
+    let sum = 0;
+    for (let j = 0; j < k; j++) {
+        sum += arr[i+j];
+    }
+    if(sum > answer) answer = sum;
+} -->
 
 <!-- <html>
     <head>
