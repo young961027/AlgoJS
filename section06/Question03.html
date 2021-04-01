@@ -6,7 +6,39 @@
     <body>
         <script>
             function solution(board, moves){
-                let answer=0;    
+                let answer=0;
+                let temp = [];
+                for (let x of moves) {
+                    for (let i=0; i<board[0].length; i++) {
+                        if (board[i][x-1] !== 0) {
+                            temp.push(board[i][x-1]);
+                            board[i][x-1] = 0;
+                            console.log(board[i][x-1])
+                            if (temp.length > 1) {
+                                for (let v=0; v<temp.length-1; v++) {
+                                    if(temp[v] === temp[v+1]) {
+                                        answer++;
+                                        temp.splice(v,2);
+                                    }
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+                console.log(temp)
+                let isSame = 1;
+                while(isSame === 1) {
+                    isSame = 0;
+                    for (let v=0; v<temp.length-1; v++) {
+                        if(temp[v] === temp[v+1]) {
+                            answer++;
+                            isSame = 1;
+                            temp.splice(v,2);
+                        }
+                    }
+                }
+                answer = answer*2;
                 return answer;
             }
             
