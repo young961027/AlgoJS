@@ -1,4 +1,48 @@
-<html>
+<html style="font-family: 'Gothic A1', sans-serif">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>후위식 연산(postfix)</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer;
+        let num = '1234567890';
+        let exp = [];
+        for (let i of str) {
+          if (num.indexOf(i) !== -1) {
+            exp.push(parseInt(i));
+          } else {
+            let b = exp.pop();
+            let a = exp.pop();
+            let result;
+            if (i === '+') {
+              result = a + b;
+            } else if (i === '-') {
+              result = a - b;
+            } else if (i === '*') {
+              result = a * b;
+            } else if (i === '/') {
+              result = a / b;
+            }
+            exp.push(result);
+          }
+        }
+        answer = exp.pop();
+        return answer;
+      }
+
+      let str = '352+*9-';
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+<!-- <html>
     <head>
         <meta charset="UTF-8">
         <title>출력결과</title>
@@ -7,6 +51,19 @@
         <script>
             function solution(s){  
                 let answer;
+                let stack=[];
+                for(let x of s){
+                    if(!isNaN(x)) stack.push(Number(x));
+                    else{
+                        let rt=stack.pop();
+                        let lt=stack.pop();
+                        if(x==='+') stack.push(lt+rt);
+                        else if(x==='-') stack.push(lt-rt);
+                        else if(x==='*') stack.push(lt*rt);
+                        else if(x==='/') stack.push(lt/rt);
+                    }
+                }
+                answer=stack[0];
                 return answer;
             }
 
@@ -14,4 +71,4 @@
             console.log(solution(str));
         </script>
     </body>
-</html>
+</html> -->
