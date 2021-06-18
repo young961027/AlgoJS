@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, results) {
+        let answer = 0;
+        let graph = Array.from({ length: n + 1 }, () => Array(n + 1).fill(0));
+
+        for (let [a, b] of results) {
+          graph[a][b] = 1;
+          graph[b][a] = -1;
+        }
+
+        for (let j = 1; j <= n; j++) {
+          for (let i = 1; i <= n; i++) {
+            for (let k = 1; k <= n; k++) {
+              debugger;
+              if (graph[i][j] === 1 && graph[j][k] === 1) graph[i][k] = 1;
+              if (graph[i][j] === -1 && graph[j][k] === -1) graph[i][k] = -1;
+            }
+          }
+        }
+
+        for (let i = 1; i <= n; i++) {
+          let cnt = 0;
+          for (let j = 1; j <= n; j++) {
+            if (graph[i][j] !== 0) cnt++;
+          }
+          if (cnt === n - 1) answer++;
+        }
+        return answer;
+      }
+
+      console.log(
+        solution(5, [
+          [1, 4],
+          [4, 2],
+          [2, 5],
+          [5, 3]
+        ])
+      );
+    </script>
+  </body>
+</html>

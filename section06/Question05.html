@@ -1,17 +1,38 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>출력결과</title>
-    </head>
-    <body>
-        <script>
-            function solution(s){
-                let answer=0;    
-                return answer;
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = 0;
+        let stack = s.split('');
+        let stick = 0;
+        let wasClosed = 0;
+        while (stack.length > 0) {
+          let tmp = stack.pop();
+          if (tmp == ')') {
+            if (wasClosed == 1) {
+              stick = stick + 1;
+            } else {
+              wasClosed = 1;
             }
-            
-            let a="()(((()())(())()))(())";
-            console.log(solution(a));
-        </script>
-    </body>
+          } else {
+            if (wasClosed == 1) {
+              answer = answer + stick;
+            } else {
+              answer = answer + 1;
+              stick = stick - 1;
+            }
+            wasClosed = 0;
+          }
+        }
+        return answer;
+      }
+
+      let a = '(((()(()()))(())()))(()())';
+      console.log(solution(a));
+    </script>
+  </body>
 </html>

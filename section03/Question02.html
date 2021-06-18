@@ -1,24 +1,24 @@
 <!-- 유효한 펠린드롬 -->
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>출력결과</title>
-    </head>
-    <body>
-        <script>
-            function solution(s){
-                let answer="YES";
-                let word = "";
-                for(i=0; i<s.length; i++) {
-                    let x = s.toLowerCase().charCodeAt(i);
-                    if(65<=x && x <= 90) word+=s[i];
-                }
-                if(word.split('').reverse().join('')!=word) answer="NO";
-                return answer;
-            }
-            
-            let str="found7, time: study; Yduts; emit, 7Dnuof";
-            console.log(solution(str));
-        </script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        let answer = 'YES';
+        let word = '';
+        for (i = 0; i < s.length; i++) {
+          let x = s.toLowerCase().charCodeAt(i);
+          if (65 <= x && x <= 90) word += s[i];
+        }
+        if (word.split('').reverse().join('') != word) answer = 'NO';
+        return answer;
+      }
+
+      let str = 'found7, time: study; Yduts; emit, 7Dnuof';
+      console.log(solution(str));
+    </script>
+  </body>
 </html>

@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, results) {
+        let answer1 = 0;
+        let answer2 = 0;
+        let graph1 = Array.from({ length: n + 1 }, () => Array(n + 1).fill(0));
+        let graph2 = Array.from({ length: n + 1 }, () => Array(n + 1).fill(0));
+
+        for (let [a, b] of results) {
+          graph1[a][b] = 1;
+          graph1[b][a] = -1;
+          graph2[a][b] = 1;
+          graph2[b][a] = -1;
+        }
+
+        for (let i = 1; i <= n; i++) {
+          for (let j = 1; j <= n; j++) {
+            for (let k = 1; k <= n; k++) {
+              if (graph1[i][j] === 1 && graph1[j][k] === 1) graph1[i][k] = 1;
+              if (graph1[i][j] === -1 && graph1[j][k] === -1) graph1[i][k] = -1;
+              if (graph2[j][i] === 1 && graph2[i][k] === 1) graph1[j][k] = 1;
+              if (graph2[j][i] === -1 && graph1[i][k] === -1) graph1[j][k] = -1;
+              if (graph1 !== graph2) debugger;
+            }
+          }
+        }
+
+        for (let i = 1; i <= n; i++) {
+          let cnt1 = 0;
+          let cnt2 = 0;
+          for (let j = 1; j <= n; j++) {
+            if (graph1[i][j] !== 0) cnt1++;
+            if (graph2[i][j] !== 0) cnt2++;
+          }
+          if (cnt1 === n - 1) answer1++;
+          if (cnt2 === n - 1) answer2++;
+        }
+        return [answer1, answer2];
+      }
+
+      console.log(
+        solution(5, [
+          [1, 4],
+          [4, 2],
+          [2, 5],
+          [5, 3]
+        ])
+      );
+    </script>
+  </body>
+</html>
