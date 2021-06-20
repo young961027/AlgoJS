@@ -1,4 +1,31 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(need, plan) {
+        let answer = 'YES';
+        let idx = [];
+        for (let i = 0; i < need.length; i++) {
+          idx.push(plan.indexOf(need[i]));
+          if (i != 0) {
+            if (idx[i - 1] > idx[i]) answer = 'NO';
+          }
+        }
+        console.log(idx);
+        return answer;
+      }
+
+      let a = 'CBA';
+      let b = 'CBDAGE';
+      console.log(solution(a, b));
+    </script>
+  </body>
+</html>
+<!-- 
+<html>
     <head>
         <meta charset="UTF-8">
         <title>출력결과</title>
@@ -7,6 +34,13 @@
         <script>
             function solution(need, plan){
                 let answer="YES";
+                let queue=need.split('');
+                for(let x of plan){
+                    if(queue.includes(x)){
+                        if(x!==queue.shift()) return "NO";
+                    }
+                }
+                if(queue.length>0) return "NO";  
                 return answer;
             }
 
@@ -16,3 +50,4 @@
         </script>
     </body>
 </html>
+ -->

@@ -15,7 +15,6 @@
         while (circle.length != 1) {
           if (idx % k != 0) circle.push(circle[0]);
           circle.shift();
-          if (circle.length == 7) console.log(circle);
           idx = idx + 1;
         }
         answer = circle[0];
