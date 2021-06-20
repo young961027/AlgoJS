@@ -1,4 +1,33 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, k) {
+        let answer;
+        let circle = [];
+        for (let i = 1; i < n + 1; i++) {
+          circle.push(i);
+        }
+        let idx = 1;
+        while (circle.length != 1) {
+          if (idx % k != 0) circle.push(circle[0]);
+          circle.shift();
+          if (circle.length == 7) console.log(circle);
+          idx = idx + 1;
+        }
+        answer = circle[0];
+        return answer;
+      }
+
+      console.log(solution(8, 3));
+    </script>
+  </body>
+</html>
+<!--
+<html>
     <head>
         <meta charset="UTF-8">
         <title>출력결과</title>
@@ -7,6 +36,12 @@
         <script>
             function solution(n, k){
                 let answer;
+                let queue=Array.from({length:n}, (v, i)=>i+1); 
+                while(queue.length){
+                    for(let i=1; i<k; i++) queue.push(queue.shift());
+                    queue.shift();
+                    if(queue.length===1) answer=queue.shift();
+                }  
                 return answer;
             }
 
@@ -14,3 +49,4 @@
         </script>
     </body>
 </html>
+-->
