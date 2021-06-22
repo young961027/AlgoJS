@@ -1,4 +1,31 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let hyunsoo = -1,
+          partner = -1;
+        for (let i = 1; i < arr.length; i++) {
+          let j = i - 1,
+            k = i + 1;
+          if (hyunsoo == -1 && partner != k && arr[k] <= arr[i]) hyunsoo = i;
+          if (partner == -1 && hyunsoo != j && arr[i] <= arr[j]) partner = i;
+        }
+        let answer = [hyunsoo + 1, partner + 1];
+        return answer;
+      }
+
+      let arr = [120, 130, 150, 150, 130, 150];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>
+
+<!-- 
+<html>
     <head>
         <meta charset="UTF-8">
         <title>출력결과</title>
@@ -7,6 +34,11 @@
         <script>
             function solution(arr){
                 let answer=[];
+                let sortArr=arr.slice();
+                sortArr.sort((a, b)=>a-b);
+                for(let i=0; i<arr.length; i++){
+                    if(arr[i]!==sortArr[i]) answer.push(i+1);
+                }
                 return answer;
             }
 
@@ -15,3 +47,4 @@
         </script>
     </body>
 </html>
+ -->

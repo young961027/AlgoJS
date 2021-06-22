@@ -8,9 +8,9 @@
       function solution(size, arr) {
         let answer = [];
         for (let x of arr) {
-          if (answer.indexOf(x) != -1) {
+          let idx = answer.indexOf(x);
+          if (idx != -1) {
             // x가 있는 경우 (길이의 변화가 발생하지 않는다 하나 넣고 하나 빼니까)
-            let idx = answer.indexOf(x);
             answer.splice(idx, 1);
             answer.unshift(x);
           } else {
