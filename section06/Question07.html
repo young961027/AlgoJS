@@ -9,17 +9,17 @@
         let answer = 'YES';
         let idx = [];
         for (let i = 0; i < need.length; i++) {
+          if (plan.indexOf(need[i]) == -1) return 'NO';
           idx.push(plan.indexOf(need[i]));
           if (i != 0) {
-            if (idx[i - 1] > idx[i]) answer = 'NO';
+            if (idx[i - 1] > idx[i]) return 'NO';
           }
         }
-        console.log(idx);
         return answer;
       }
 
       let a = 'CBA';
-      let b = 'CBDAGE';
+      let b = 'CDABGE';
       console.log(solution(a, b));
     </script>
   </body>
