@@ -1,4 +1,35 @@
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(size, arr) {
+        let answer = [];
+        for (let x of arr) {
+          if (answer.indexOf(x) != -1) {
+            // x가 있는 경우 (길이의 변화가 발생하지 않는다 하나 넣고 하나 빼니까)
+            let idx = answer.indexOf(x);
+            answer.splice(idx, 1);
+            answer.unshift(x);
+          } else {
+            // x가 없는 경우 (길이가 +1 된다)
+            answer.unshift(x);
+            if (answer.length > size) answer.pop(); // 길이가 넘친 경우 마지막걸 뺀다.
+          }
+        }
+        return answer;
+      }
+
+      let arr = [1, 2, 3, 2, 6, 2, 3, 5, 7];
+      console.log(solution(5, arr));
+    </script>
+  </body>
+</html>
+
+<!-- 
+<html>
     <head>
         <meta charset="UTF-8">
         <title>출력결과</title>
@@ -30,25 +61,4 @@
             console.log(solution(5, arr));
         </script>
     </body>
-</html>
-
-
-
-
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>출력결과</title>
-    </head>
-    <body>
-        <script>
-            function solution(size, arr){
-                let answer=[];
-                return answer;
-            }
-
-            let arr=[1, 2, 3, 2, 6, 2, 3, 5, 7];
-            console.log(solution(5, arr));
-        </script>
-    </body>
-</html>
+</html> -->
