@@ -1,16 +1,77 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>출력결과</title>
-    </head>
-    <body>
-        <script>
-            function solution(n){
-                let answer="";
-                return answer;
-            }
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer = '';
+        function preOrder(v) {
+          if (v > 7) return;
+          else {
+            answer += v + ' ';
+            preOrder(2 * v);
+            preOrder(2 * v + 1);
+          }
+        }
+        preOrder(n);
+        return answer;
+      }
 
-            console.log(solution(1));
-        </script>
-    </body>
+      console.log(solution(1));
+    </script>
+  </body>
 </html>
+
+<!-- <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer = '';
+        function inOrder(v) {
+          if (v > 7) return;
+          else {
+            inOrder(2 * v);
+            answer += v + ' ';
+            inOrder(2 * v + 1);
+          }
+        }
+        inOrder(n);
+        return answer;
+      }
+
+      console.log(solution(1));
+    </script>
+  </body>
+</html> -->
+
+<!-- <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer = '';
+        function postOrder(v) {
+          if (v > 7) return;
+          else {
+            postOrder(2 * v);
+            postOrder(2 * v + 1);
+            answer += v + ' ';
+          }
+        }
+        postOrder(n);
+        return answer;
+      }
+
+      console.log(solution(1));
+    </script>
+  </body>
+</html> -->
