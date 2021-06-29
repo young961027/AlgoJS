@@ -1,3 +1,38 @@
+<!-- 틀린 답이다. m이 2임을 가정했을때만 가능한 답이기 때문에. 문제를 더 꼼꼼히 읽고 풀이를 작성할 것. -->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, m) {
+        let answer = [];
+        function indexOf2D(arr, a, b) {
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i][0] === a && arr[i][1] === b) return i;
+          }
+          return -1;
+        }
+        function DFS(a, b) {
+          if (a === n + 1) return;
+          if (b === n + 1) return;
+          if (indexOf2D(answer, a, b) === -1) {
+            answer.push([a, b]);
+          }
+          DFS(a, b + 1);
+          DFS(a + 1, b);
+        }
+        DFS(1, 1);
+        answer.push(answer.length);
+        return answer;
+      }
+
+      console.log(solution(3, 2));
+    </script>
+  </body>
+</html>
+<!--  
 <html>
     <head>
         <meta charset="UTF-8">
@@ -7,6 +42,20 @@
         <script>
             function solution(n, m){
                 let answer=[];
+                let tmp=Array.from({length:m}, ()=>0);
+                function DFS(L){
+                    if(L===m){
+                        answer.push(tmp.slice());
+                    }
+                    else{
+                        for(let i=1; i<=n; i++){
+                            tmp[L]=i;
+                            DFS(L+1);
+                        }
+                    }   
+                }
+                
+                DFS(0);
                 return answer;
             }
 
@@ -14,3 +63,4 @@
         </script>
     </body>
 </html>
+-->
