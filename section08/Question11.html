@@ -1,16 +1,24 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>출력결과</title>
-    </head>
-    <body>
-        <script>
-            function solution(n){         
-                let answer;
-                return answer;
-            }
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let answer = 1;
+        function factorial(a) {
+          if (a === 1) return answer;
+          else {
+            answer = answer * a;
+            factorial(a - 1);
+          }
+        }
+        factorial(n);
+        return answer;
+      }
 
-            console.log(solution(5));
-        </script>
-    </body>
+      console.log(solution(5));
+    </script>
+  </body>
 </html>
